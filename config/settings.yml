@@ -1,0 +1,4 @@
+plugins:
+  wada_test_enabled:
+    default: true
+    client: true

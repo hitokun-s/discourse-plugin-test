@@ -1,0 +1,8 @@
+<p><button {{action 'foo'}}>Click Me!</button></p>
+
+<p>商品名：{{cat}}</p>
+
+{{#each topics  as |t|}}
+  <p>質問：{{t.title}}</p>
+  <p>回答：{{t.topComment.val}}</p>
+{{/each}}
