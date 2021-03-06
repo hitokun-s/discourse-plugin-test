@@ -1,7 +1,7 @@
 module WadaTest
   class WadaTestController < ::ApplicationController
   # class WadaTestController < ListController
-    include ReverseProxy::Controller
+  #   include ReverseProxy::Controller
     requires_plugin WadaTest
 
     # before_action :ensure_logged_in
