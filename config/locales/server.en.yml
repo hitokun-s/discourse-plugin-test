@@ -1,3 +1,9 @@
 en:
   site_settings:
     wada_test_enabled: "Enable WadaTest plugin"
+  user_notifications:
+    user_post_approved:
+      title: "Post Approved"
+      subject_template: "Post Approved"
+      text_body_template: |
+        test post approved
