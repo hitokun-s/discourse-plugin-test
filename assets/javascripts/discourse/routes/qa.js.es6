@@ -4,33 +4,35 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 
 // export default DiscourseRoute.extend({
 export default Ember.Route.extend({
-  controllerName: "cat",
+  controllerName: "qa",
 
   init() {
     this._super(...arguments);
-    console.log("init");
-    // withPluginApi("0.8.31", function(api){
-    //   console.log(api.getCurrentUser());
-    // });
+    console.log("init qa");
   },
 
+  // params: pid, qid
   model: function(params, transition) {
     // return this.store.find('entry', params['id']);
     console.log(params);
-    return ajax('/wada-test/cat/show.json?name=' + params['cname']);
+    this.params = params;
+    return ajax('/t/' + params['qid'] + ".json");
   },
-
-  // renderTemplate() {
-  //   this.render("cat");
-  // },
 
   setupController: function(controller, model) {
     console.log("setupController");
     console.log(model);
-    model.topics.forEach(function(t){
-      t.q = t.posts[0];
-      t.topAnswer = t.posts[1];
+    console.log(this.params.cname);
+
+    console.log(moment(model.created_at).format("yyyy/MM/DD HH:mm:ss"))
+
+    controller.setProperties({
+      title: model.title,
+      cname: this.params.cname,
+      created_at: model.created_at,
+      details: model.details,
+      q: model.post_stream.posts[0],
+      answers: model.post_stream.posts.slice(1)
     });
-    controller.setProperties(model);
   }
 });

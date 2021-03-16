@@ -1,8 +1,14 @@
-<p><button {{action 'foo'}}>Click Me!</button></p>
+<!--<p><button {{action 'foo'}}>Click Me!</button></p>-->
 
-<p>商品名：{{cat}}</p>
+<p>商品ID：{{cat.name}}</p>
 
 {{#each topics  as |t|}}
-  <p>質問：{{t.title}}</p>
-  <p>回答：{{t.topComment.val}}</p>
+  <hr>
+  <p>質問：{{t.detail.title}}</p>
+  {{{ t.q.cooked }}}
+  <span>{{ t.detail.created_by.name }}&nbsp;{{ fmsFormatDate t.created_at }}</span>
+  <br>
+  回答：{{{t.topAnswer.cooked}}}
+  <br>
+  <span>投稿者：{{ t.topAnswer.created_by.name }}&nbsp;投稿日：{{ fmsFormatDate t.topAnswer.created_at }}</span>
 {{/each}}

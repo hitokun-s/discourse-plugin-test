@@ -10,10 +10,11 @@ export default Controller.extend({
         type: "PUT",
         data: { name: this.get("name") }
       }).then(function(){
+        console.log("done name");
         alert("succeed!");
       }).catch(function(e){
-        alert("failed!");
         console.log(e);
+        alert("failed!");
       });
     }
   }
